@@ -1602,8 +1602,11 @@ class LineTooltipItem with EquatableMixin {
   final TextStyle textStyleUpper;
   final TextStyle textStyleLower;
 
+  final Color shadowColor;
+
   /// Shows a [text] with [textStyle] as a row in the tooltip popup.
-  LineTooltipItem({this.textUpper, this.textStyleUpper, this.textLower, this.textStyleLower});
+  LineTooltipItem(
+      {this.textUpper, this.textStyleUpper, this.textLower, this.textStyleLower, this.shadowColor});
 
   /// Used for equality check, see [EquatableMixin].
   @override
