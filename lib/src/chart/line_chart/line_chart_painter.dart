@@ -1263,7 +1263,7 @@ class LineChartPainter extends AxisChartPainter<LineChartData>
     _path.addRRect(roundedRect);
 
     //TODO: this is james and again a bit of a guess
-    canvas.drawShadow(_path, Colors.black, 5, false);
+    canvas.drawShadow(_path, Colors.red, 5, false);
 
     /// draw the texts one by one in below of each other
     double topPosSeek = tooltipData.tooltipPadding.top;
