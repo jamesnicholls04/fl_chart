@@ -1203,7 +1203,7 @@ class LineChartPainter extends AxisChartPainter<LineChartData>
       mostTopOffset.dx - (tooltipWidth / 2),
       tooltipTopPosition,
       tooltipWidth,
-      tooltipHeight,
+      tooltipHeight + 30,
     );
 
     if (tooltipData.fitInsideHorizontally) {
