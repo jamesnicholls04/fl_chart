@@ -1145,19 +1145,19 @@ class LineChartPainter extends AxisChartPainter<LineChartData>
           textScaleFactor: textScale);
       tpUpper.layout(maxWidth: tooltipData.maxContentWidth);
 
-      final TextSpan spanLower =
-          TextSpan(style: tooltipItem.textStyleLower, text: tooltipItem.textLower);
-      final TextPainter tpLower = TextPainter(
-          text: spanLower,
-          textAlign: TextAlign.center,
-          textDirection: TextDirection.ltr,
-          textScaleFactor: textScale);
+      // final TextSpan spanLower =
+      //     TextSpan(style: tooltipItem.textStyleLower, text: tooltipItem.textLower);
+      // final TextPainter tpLower = TextPainter(
+      //     text: spanLower,
+      //     textAlign: TextAlign.center,
+      //     textDirection: TextDirection.ltr,
+      //     textScaleFactor: textScale);
 
-      tpLower.layout(maxWidth: tooltipData.maxContentWidth);
+      // tpLower.layout(maxWidth: tooltipData.maxContentWidth);
 
       //TODO: this is james... now can do two text styles
       drawingTextPainters.add(tpUpper);
-      drawingTextPainters.add(tpLower);
+      //drawingTextPainters.add(tpLower);
     }
     if (drawingTextPainters.isEmpty) {
       return;
@@ -1206,49 +1206,49 @@ class LineChartPainter extends AxisChartPainter<LineChartData>
       tooltipHeight,
     );
 
-    // if (tooltipData.fitInsideHorizontally) {
-    //   if (rect.left < 0) {
-    //     final shiftAmount = 0 - rect.left;
-    //     rect = Rect.fromLTRB(
-    //       rect.left + shiftAmount,
-    //       rect.top,
-    //       rect.right + shiftAmount,
-    //       rect.bottom,
-    //     );
-    //   }
+    if (tooltipData.fitInsideHorizontally) {
+      if (rect.left < 0) {
+        final shiftAmount = 0 - rect.left;
+        rect = Rect.fromLTRB(
+          rect.left + shiftAmount,
+          rect.top,
+          rect.right + shiftAmount,
+          rect.bottom,
+        );
+      }
 
-    //   if (rect.right > viewSize.width) {
-    //     final shiftAmount = rect.right - viewSize.width;
-    //     rect = Rect.fromLTRB(
-    //       rect.left - shiftAmount,
-    //       rect.top,
-    //       rect.right - shiftAmount,
-    //       rect.bottom,
-    //     );
-    //   }
-    // }
+      if (rect.right > viewSize.width) {
+        final shiftAmount = rect.right - viewSize.width;
+        rect = Rect.fromLTRB(
+          rect.left - shiftAmount,
+          rect.top,
+          rect.right - shiftAmount,
+          rect.bottom,
+        );
+      }
+    }
 
-    // if (tooltipData.fitInsideVertically) {
-    //   if (rect.top < 0) {
-    //     final shiftAmount = 0 - rect.top;
-    //     rect = Rect.fromLTRB(
-    //       rect.left,
-    //       rect.top + shiftAmount,
-    //       rect.right,
-    //       rect.bottom + shiftAmount,
-    //     );
-    //   }
+    if (tooltipData.fitInsideVertically) {
+      if (rect.top < 0) {
+        final shiftAmount = 0 - rect.top;
+        rect = Rect.fromLTRB(
+          rect.left,
+          rect.top + shiftAmount,
+          rect.right,
+          rect.bottom + shiftAmount,
+        );
+      }
 
-    //   if (rect.bottom > viewSize.height) {
-    //     final shiftAmount = rect.bottom - viewSize.height;
-    //     rect = Rect.fromLTRB(
-    //       rect.left,
-    //       rect.top - shiftAmount,
-    //       rect.right,
-    //       rect.bottom - shiftAmount,
-    //     );
-    //   }
-    // }
+      if (rect.bottom > viewSize.height) {
+        final shiftAmount = rect.bottom - viewSize.height;
+        rect = Rect.fromLTRB(
+          rect.left,
+          rect.top - shiftAmount,
+          rect.right,
+          rect.bottom - shiftAmount,
+        );
+      }
+    }
 
     final Radius radius = Radius.circular(tooltipData.tooltipRoundedRadius);
     final RRect roundedRect = RRect.fromRectAndCorners(rect,
