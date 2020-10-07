@@ -1257,6 +1257,14 @@ class LineChartPainter extends AxisChartPainter<LineChartData>
 
     canvas.drawRRect(roundedRect, _bgTouchTooltipPaint);
 
+    final Path _path = Path();
+
+    //RRect.
+    _path.addRRect(roundedRect);
+
+    //TODO: this is james and again a bit of a guess
+    canvas.drawShadow(_path, Colors.black, 5, false);
+
     /// draw the texts one by one in below of each other
     double topPosSeek = tooltipData.tooltipPadding.top;
     for (TextPainter tp in drawingTextPainters) {
@@ -1268,12 +1276,6 @@ class LineChartPainter extends AxisChartPainter<LineChartData>
       topPosSeek += tp.height;
       topPosSeek += textsBelowMargin;
     }
-
-    var path = Path();
-    path.addRect(rect);
-
-    //TODO: this is james and again a bit of a guess
-    canvas.drawShadow(path, Colors.black38, 5, false);
   }
 
   double _getBarLineXLength(LineChartBarData barData, Size chartUsableSize) {
