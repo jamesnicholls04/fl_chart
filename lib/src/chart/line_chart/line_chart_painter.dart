@@ -1265,17 +1265,18 @@ class LineChartPainter extends AxisChartPainter<LineChartData>
     //TODO: this is james and again a bit of a guess
     canvas.drawShadow(_path, Colors.red, 5, false);
 
-    /// draw the texts one by one in below of each other
-    double topPosSeek = tooltipData.tooltipPadding.top;
-    for (TextPainter tp in drawingTextPainters) {
-      final drawOffset = Offset(
-        rect.center.dx - (tp.width / 2),
-        rect.topCenter.dy + topPosSeek,
-      );
-      tp.paint(canvas, drawOffset);
-      topPosSeek += tp.height;
-      topPosSeek += textsBelowMargin;
-    }
+    // /// draw the texts one by one in below of each other
+    // double topPosSeek = tooltipData.tooltipPadding.top;
+
+    // for (TextPainter tp in drawingTextPainters) {
+    //   final drawOffset = Offset(
+    //     rect.center.dx - (tp.width / 2),
+    //     rect.topCenter.dy + topPosSeek,
+    //   );
+    //   tp.paint(canvas, drawOffset);
+    //   topPosSeek += tp.height;
+    //   topPosSeek += textsBelowMargin;
+    // }
   }
 
   double _getBarLineXLength(LineChartBarData barData, Size chartUsableSize) {
