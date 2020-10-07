@@ -1206,49 +1206,49 @@ class LineChartPainter extends AxisChartPainter<LineChartData>
       tooltipHeight,
     );
 
-    if (tooltipData.fitInsideHorizontally) {
-      if (rect.left < 0) {
-        final shiftAmount = 0 - rect.left;
-        rect = Rect.fromLTRB(
-          rect.left + shiftAmount,
-          rect.top,
-          rect.right + shiftAmount,
-          rect.bottom,
-        );
-      }
+    // if (tooltipData.fitInsideHorizontally) {
+    //   if (rect.left < 0) {
+    //     final shiftAmount = 0 - rect.left;
+    //     rect = Rect.fromLTRB(
+    //       rect.left + shiftAmount,
+    //       rect.top,
+    //       rect.right + shiftAmount,
+    //       rect.bottom,
+    //     );
+    //   }
 
-      if (rect.right > viewSize.width) {
-        final shiftAmount = rect.right - viewSize.width;
-        rect = Rect.fromLTRB(
-          rect.left - shiftAmount,
-          rect.top,
-          rect.right - shiftAmount,
-          rect.bottom,
-        );
-      }
-    }
+    //   if (rect.right > viewSize.width) {
+    //     final shiftAmount = rect.right - viewSize.width;
+    //     rect = Rect.fromLTRB(
+    //       rect.left - shiftAmount,
+    //       rect.top,
+    //       rect.right - shiftAmount,
+    //       rect.bottom,
+    //     );
+    //   }
+    // }
 
-    if (tooltipData.fitInsideVertically) {
-      if (rect.top < 0) {
-        final shiftAmount = 0 - rect.top;
-        rect = Rect.fromLTRB(
-          rect.left,
-          rect.top + shiftAmount,
-          rect.right,
-          rect.bottom + shiftAmount,
-        );
-      }
+    // if (tooltipData.fitInsideVertically) {
+    //   if (rect.top < 0) {
+    //     final shiftAmount = 0 - rect.top;
+    //     rect = Rect.fromLTRB(
+    //       rect.left,
+    //       rect.top + shiftAmount,
+    //       rect.right,
+    //       rect.bottom + shiftAmount,
+    //     );
+    //   }
 
-      if (rect.bottom > viewSize.height) {
-        final shiftAmount = rect.bottom - viewSize.height;
-        rect = Rect.fromLTRB(
-          rect.left,
-          rect.top - shiftAmount,
-          rect.right,
-          rect.bottom - shiftAmount,
-        );
-      }
-    }
+    //   if (rect.bottom > viewSize.height) {
+    //     final shiftAmount = rect.bottom - viewSize.height;
+    //     rect = Rect.fromLTRB(
+    //       rect.left,
+    //       rect.top - shiftAmount,
+    //       rect.right,
+    //       rect.bottom - shiftAmount,
+    //     );
+    //   }
+    // }
 
     final Radius radius = Radius.circular(tooltipData.tooltipRoundedRadius);
     final RRect roundedRect = RRect.fromRectAndCorners(rect,
@@ -1270,9 +1270,7 @@ class LineChartPainter extends AxisChartPainter<LineChartData>
         rect.center.dx - (tp.width / 2),
         rect.topCenter.dy + topPosSeek,
       );
-
-      //Testing zero offset
-      tp.paint(canvas, Offset.zero);
+      tp.paint(canvas, drawOffset);
       topPosSeek += tp.height;
       topPosSeek += textsBelowMargin;
     }
