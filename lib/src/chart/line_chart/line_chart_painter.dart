@@ -1119,7 +1119,7 @@ class LineChartPainter extends AxisChartPainter<LineChartData>
       FlSpot showOnSpot, ShowingTooltipIndicators showingTooltipSpots) {
     final Size chartUsableSize = getChartUsableDrawSize(viewSize);
 
-    const double textsBelowMargin = 0;
+    const double textsBelowMargin = 4;
 
     /// creating TextPainters to calculate the width and height of the tooltip
     final List<TextPainter> drawingTextPainters = [];
@@ -1191,9 +1191,10 @@ class LineChartPainter extends AxisChartPainter<LineChartData>
     final double tooltipWidth = biggerWidth + tooltipData.tooltipPadding.horizontal;
     final double tooltipHeight = sumTextsHeight + tooltipData.tooltipPadding.vertical;
 
+    //TODO: changed this
     double tooltipTopPosition;
     if (tooltipData.showOnTopOfTheChartBoxArea) {
-      tooltipTopPosition = 0 - tooltipHeight - tooltipData.tooltipBottomMargin;
+      tooltipTopPosition = 0; // - tooltipHeight - tooltipData.tooltipBottomMargin;
     } else {
       tooltipTopPosition = mostTopOffset.dy - tooltipHeight - tooltipData.tooltipBottomMargin;
     }
