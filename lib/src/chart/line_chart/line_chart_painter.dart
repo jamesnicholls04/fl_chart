@@ -1136,16 +1136,28 @@ class LineChartPainter extends AxisChartPainter<LineChartData>
         continue;
       }
 
-      final TextSpan span = TextSpan(style: tooltipItem.textStyle, text: tooltipItem.text);
-      final TextPainter tp = TextPainter(
-          text: span,
+      final TextSpan spanUpper =
+          TextSpan(style: tooltipItem.textStyleUpper, text: tooltipItem.textUpper);
+      final TextPainter tpUpper = TextPainter(
+          text: spanUpper,
           textAlign: TextAlign.center,
           textDirection: TextDirection.ltr,
           textScaleFactor: textScale);
-      tp.layout(maxWidth: tooltipData.maxContentWidth);
-      drawingTextPainters.add(tp);
-      //test - adding another
-      drawingTextPainters.add(tp);
+      tpUpper.layout(maxWidth: tooltipData.maxContentWidth);
+
+      final TextSpan spanLower =
+          TextSpan(style: tooltipItem.textStyleLower, text: tooltipItem.textLower);
+      final TextPainter tpLower = TextPainter(
+          text: spanLower,
+          textAlign: TextAlign.center,
+          textDirection: TextDirection.ltr,
+          textScaleFactor: textScale);
+
+      tpLower.layout(maxWidth: tooltipData.maxContentWidth);
+
+      //TODO: this is james... now can do two text styles
+      drawingTextPainters.add(tpUpper);
+      drawingTextPainters.add(tpLower);
     }
     if (drawingTextPainters.isEmpty) {
       return;

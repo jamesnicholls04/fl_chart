@@ -1555,7 +1555,7 @@ List<LineTooltipItem> defaultLineTooltipItem(List<LineBarSpot> touchedSpots) {
       fontWeight: FontWeight.bold,
       fontSize: 14,
     );
-    return LineTooltipItem(touchedSpot.y.toString(), textStyle);
+    return LineTooltipItem(textUpper: touchedSpot.y.toString(), textStyleUpper: textStyle);
   }).toList();
 }
 
@@ -1595,20 +1595,19 @@ class LineBarSpot extends FlSpot with EquatableMixin {
 /// Holds data of showing each row item in the tooltip popup.
 class LineTooltipItem with EquatableMixin {
   /// Showing text.
-  final String text;
+  final String textUpper;
+  final String textLower;
 
   /// Style of showing text.
-  final TextStyle textStyle;
+  final TextStyle textStyleUpper;
+  final TextStyle textStyleLower;
 
   /// Shows a [text] with [textStyle] as a row in the tooltip popup.
-  LineTooltipItem(this.text, this.textStyle);
+  LineTooltipItem({this.textUpper, this.textStyleUpper, this.textLower, this.textStyleLower});
 
   /// Used for equality check, see [EquatableMixin].
   @override
-  List<Object> get props => [
-        text,
-        textStyle,
-      ];
+  List<Object> get props => [textUpper, textStyleUpper, textLower, textStyleLower];
 }
 
 /// details of showing indicator when touch happened on [LineChart]
