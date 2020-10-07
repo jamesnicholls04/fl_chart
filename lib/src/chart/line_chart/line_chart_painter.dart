@@ -1203,7 +1203,7 @@ class LineChartPainter extends AxisChartPainter<LineChartData>
       mostTopOffset.dx - (tooltipWidth / 2),
       tooltipTopPosition,
       tooltipWidth,
-      tooltipHeight + 30,
+      tooltipHeight,
     );
 
     if (tooltipData.fitInsideHorizontally) {
@@ -1257,12 +1257,9 @@ class LineChartPainter extends AxisChartPainter<LineChartData>
 
     canvas.drawRRect(roundedRect, _bgTouchTooltipPaint);
 
-    final Path _path = Path();
-
-    //RRect.
-    _path.addRRect(roundedRect);
-
     //TODO: this is james and again a bit of a guess
+    final Path _path = Path();
+    _path.addRRect(roundedRect);
     canvas.drawShadow(_path, Colors.red, 5, false);
 
     // /// draw the texts one by one in below of each other
@@ -1273,7 +1270,9 @@ class LineChartPainter extends AxisChartPainter<LineChartData>
         rect.center.dx - (tp.width / 2),
         rect.topCenter.dy + topPosSeek,
       );
-      tp.paint(canvas, drawOffset);
+
+      //Testing zero offset
+      tp.paint(canvas, Offset.zero);
       topPosSeek += tp.height;
       topPosSeek += textsBelowMargin;
     }
