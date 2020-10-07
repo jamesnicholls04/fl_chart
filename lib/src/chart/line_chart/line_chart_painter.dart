@@ -1144,6 +1144,8 @@ class LineChartPainter extends AxisChartPainter<LineChartData>
           textScaleFactor: textScale);
       tp.layout(maxWidth: tooltipData.maxContentWidth);
       drawingTextPainters.add(tp);
+      //test - adding another
+      drawingTextPainters.add(tp);
     }
     if (drawingTextPainters.isEmpty) {
       return;
