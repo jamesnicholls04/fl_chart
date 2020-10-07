@@ -1254,7 +1254,14 @@ class LineChartPainter extends AxisChartPainter<LineChartData>
     final RRect roundedRect = RRect.fromRectAndCorners(rect,
         topLeft: radius, topRight: radius, bottomLeft: radius, bottomRight: radius);
     _bgTouchTooltipPaint.color = tooltipData.tooltipBgColor;
+
     canvas.drawRRect(roundedRect, _bgTouchTooltipPaint);
+
+    var path = Path();
+    path.addRRect(roundedRect);
+
+    //TODO: this is james and again a bit of a guess
+    canvas.drawShadow(path, Colors.black38, 4, false);
 
     /// draw the texts one by one in below of each other
     double topPosSeek = tooltipData.tooltipPadding.top;
