@@ -1273,7 +1273,7 @@ class LineChartPainter extends AxisChartPainter<LineChartData>
     path.addRect(rect);
 
     //TODO: this is james and again a bit of a guess
-    canvas.drawShadow(path, Colors.black38, 0, false);
+    canvas.drawShadow(path, Colors.black38, 5, false);
   }
 
   double _getBarLineXLength(LineChartBarData barData, Size chartUsableSize) {
