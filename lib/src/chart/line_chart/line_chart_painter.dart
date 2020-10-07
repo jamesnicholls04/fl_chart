@@ -1258,7 +1258,7 @@ class LineChartPainter extends AxisChartPainter<LineChartData>
     canvas.drawRRect(roundedRect, _bgTouchTooltipPaint);
 
     var path = Path();
-    path.addRRect(roundedRect);
+    path.addRect(rect);
 
     //TODO: this is james and again a bit of a guess
     canvas.drawShadow(path, Colors.black38, 0, true);
