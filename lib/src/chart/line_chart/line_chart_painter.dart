@@ -1191,10 +1191,10 @@ class LineChartPainter extends AxisChartPainter<LineChartData>
     final double tooltipWidth = biggerWidth + tooltipData.tooltipPadding.horizontal;
     final double tooltipHeight = sumTextsHeight + tooltipData.tooltipPadding.vertical;
 
-    //TODO: changed this
     double tooltipTopPosition;
+
     if (tooltipData.showOnTopOfTheChartBoxArea) {
-      tooltipTopPosition = 0; // - tooltipHeight - tooltipData.tooltipBottomMargin;
+      tooltipTopPosition = 0 - tooltipHeight - tooltipData.tooltipBottomMargin;
     } else {
       tooltipTopPosition = mostTopOffset.dy - tooltipHeight - tooltipData.tooltipBottomMargin;
     }
@@ -1260,8 +1260,9 @@ class LineChartPainter extends AxisChartPainter<LineChartData>
 
     //TODO: this is james and again a bit of a guess
     final Path _path = Path();
-    _path.addRRect(roundedRect);
-    canvas.drawShadow(_path, Colors.red, 5, false);
+    final RRect myRRect = RRect.fromRectAndRadius(rect, radius);
+    _path.addRRect(myRRect);
+    canvas.drawShadow(_path, Colors.teal, 5, false);
 
     // /// draw the texts one by one in below of each other
     double topPosSeek = tooltipData.tooltipPadding.top;
