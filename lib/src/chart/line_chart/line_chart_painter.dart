@@ -1119,7 +1119,7 @@ class LineChartPainter extends AxisChartPainter<LineChartData>
       FlSpot showOnSpot, ShowingTooltipIndicators showingTooltipSpots) {
     final Size chartUsableSize = getChartUsableDrawSize(viewSize);
 
-    const double textsBelowMargin = 4;
+    const double textsBelowMargin = 0;
 
     /// creating TextPainters to calculate the width and height of the tooltip
     final List<TextPainter> drawingTextPainters = [];
@@ -1145,19 +1145,19 @@ class LineChartPainter extends AxisChartPainter<LineChartData>
           textScaleFactor: textScale);
       tpUpper.layout(maxWidth: tooltipData.maxContentWidth);
 
-      // final TextSpan spanLower =
-      //     TextSpan(style: tooltipItem.textStyleLower, text: tooltipItem.textLower);
-      // final TextPainter tpLower = TextPainter(
-      //     text: spanLower,
-      //     textAlign: TextAlign.center,
-      //     textDirection: TextDirection.ltr,
-      //     textScaleFactor: textScale);
+      final TextSpan spanLower =
+          TextSpan(style: tooltipItem.textStyleLower, text: tooltipItem.textLower);
+      final TextPainter tpLower = TextPainter(
+          text: spanLower,
+          textAlign: TextAlign.center,
+          textDirection: TextDirection.ltr,
+          textScaleFactor: textScale);
 
-      // tpLower.layout(maxWidth: tooltipData.maxContentWidth);
+      tpLower.layout(maxWidth: tooltipData.maxContentWidth);
 
       //TODO: this is james... now can do two text styles
       drawingTextPainters.add(tpUpper);
-      //drawingTextPainters.add(tpLower);
+      drawingTextPainters.add(tpLower);
     }
     if (drawingTextPainters.isEmpty) {
       return;
