@@ -1260,7 +1260,7 @@ class LineChartPainter extends AxisChartPainter<LineChartData>
 
     //TODO: this is james and again a bit of a guess
     final Path _path = Path();
-    Rect myRect = Rect.fromLTRB(rect.left, rect.right, rect.top + 10, rect.bottom);
+    Rect myRect = Rect.fromLTRB(rect.left, rect.top + 20, rect.right, rect.bottom);
     final RRect myRRect = RRect.fromRectAndRadius(rect, radius);
     _path.addRRect(myRRect);
     canvas.drawShadow(_path, Colors.orange, 5, false);
