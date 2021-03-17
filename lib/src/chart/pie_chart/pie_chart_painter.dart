@@ -104,6 +104,9 @@ class PieChartPainter extends BaseChartPainter<PieChartData> with TouchHandler<P
       _sectionPaint.color = section.color;
       _sectionPaint.strokeWidth = section.radius;
 
+      paintBorder(canvas, rect,
+          top: BorderSide(color: Colors.black), left: BorderSide(color: Colors.black));
+
       final double startAngle = tempAngle;
       final double sweepAngle = sectionDegree;
       canvas.drawArc(
