@@ -238,6 +238,8 @@ class LineChartPainter extends AxisChartPainter<LineChartData>
 
     final barXDelta = _getBarLineXLength(barData, viewSize);
 
+    print('extradots.length: ${extraDots.length}');
+
     for (int i = 0; i < extraDots.length; i++) {
       final FlSpot spot = extraDots[i];
       if (spot.isNotNull()) {
