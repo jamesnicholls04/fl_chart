@@ -309,6 +309,8 @@ class LineChartBarData with EquatableMixin {
   /// Holds data for representing a Step Line Chart, and works only if [isStepChart] is true.
   final LineChartStepData lineChartStepData;
 
+  final List<FlSpot> extraSpots;
+
   /// [BarChart] draws some lines and overlaps them in the chart's view,
   /// You can have multiple lines by splitting them,
   /// put a [FlSpot.nullSpot] between each section.
@@ -368,6 +370,7 @@ class LineChartBarData with EquatableMixin {
     List<int> dashArray,
     Shadow shadow,
     bool isStepLineChart,
+    this.extraSpots,
     LineChartStepData lineChartStepData,
   })  : spots = spots ?? const [],
         show = show ?? true,

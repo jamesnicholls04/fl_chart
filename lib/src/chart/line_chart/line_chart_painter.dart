@@ -100,7 +100,7 @@ class LineChartPainter extends AxisChartPainter<LineChartData>
       }
 
       _drawBarLine(canvas, size, barData);
-      _drawDots(canvas, size, barData);
+      _drawDots(canvas, size, barData, barData.extraSpots);
 
       if (data.extraLinesData != null && data.extraLinesData.extraLinesOnTop) {
         _drawExtraLines(canvas, size);
@@ -230,17 +230,17 @@ class LineChartPainter extends AxisChartPainter<LineChartData>
     _drawBetweenBar(canvas, viewSize, barPath, betweenBarsData);
   }
 
-  void _drawDots(Canvas canvas, Size viewSize, LineChartBarData barData) {
-    if (!barData.dotData.show || barData.spots == null || barData.spots.isEmpty) {
+  void _drawDots(Canvas canvas, Size viewSize, LineChartBarData barData, List<FlSpot> extraDots) {
+    if (!barData.dotData.show) {
       return;
     }
     viewSize = getChartUsableDrawSize(viewSize);
 
     final barXDelta = _getBarLineXLength(barData, viewSize);
 
-    for (int i = 0; i < barData.spots.length; i++) {
-      final FlSpot spot = barData.spots[i];
-      if (spot.isNotNull() && barData.dotData.checkToShowDot(spot, barData)) {
+    for (int i = 0; i < extraDots.length; i++) {
+      final FlSpot spot = extraDots[i];
+      if (spot.isNotNull()) {
         final double x = getPixelX(spot.x, viewSize);
         final double y = getPixelY(spot.y, viewSize);
 
