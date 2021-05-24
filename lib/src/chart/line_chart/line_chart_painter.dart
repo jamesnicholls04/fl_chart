@@ -231,7 +231,7 @@ class LineChartPainter extends AxisChartPainter<LineChartData>
   }
 
   void _drawDots(Canvas canvas, Size viewSize, LineChartBarData barData, List<FlSpot> extraDots) {
-    if (!barData.dotData.show) {
+    if (!barData.dotData.show || extraDots.isEmpty || extraDots == null) {
       return;
     }
     viewSize = getChartUsableDrawSize(viewSize);
