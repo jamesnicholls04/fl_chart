@@ -231,14 +231,12 @@ class LineChartPainter extends AxisChartPainter<LineChartData>
   }
 
   void _drawDots(Canvas canvas, Size viewSize, LineChartBarData barData, List<FlSpot> extraDots) {
-    if (!barData.dotData.show || extraDots.isEmpty || extraDots == null) {
+    if (!barData.dotData.show || extraDots == null || extraDots.isEmpty) {
       return;
     }
     viewSize = getChartUsableDrawSize(viewSize);
 
     final barXDelta = _getBarLineXLength(barData, viewSize);
-
-    print('extradots.length: ${extraDots.length}');
 
     for (int i = 0; i < extraDots.length; i++) {
       final FlSpot spot = extraDots[i];
